@@ -11,9 +11,9 @@ public class BarboothGame {
         System.out.println();
 
         // TODO 1: Ask for both player names
-        System.out.println("Player 1, please enter your name: ");
+        System.out.print("Player 1, please enter your name: ");
         String player1 = input.nextLine();
-        System.out.println("Player 2, please enter your name: ");
+        System.out.print("Player 2, please enter your name: ");
         String player2 = input.nextLine();
 
      // TODO 2: Roll one die for each player until one player gets a higher number
@@ -55,13 +55,24 @@ public class BarboothGame {
         } else if (isLosingRoll(die1, die2)) {
             System.out.println(fader + " wins!");
         } else {
-        	
-        }
+      
+        
         // TODO 5: If needed, let the fader roll two dice
-
+        System.out.print(fader + ", please enter 'r' to roll: ");
+        input.nextLine();
+        int faderDie1 = rollDie(rand);
+        int faderDie2 = rollDie(rand);
+        System.out.println(fader + ": " + faderDie1 + " - " + faderDie2);
+        
         // TODO 6: Display the final result: shooter wins, fader wins, or tie
-
-        input.close();
+        if (isWinningRoll(faderDie1, faderDie2)) {
+            System.out.println(fader + " wins!");
+        } else if (isLosingRoll(faderDie1, faderDie2)) {
+            System.out.println(shooter + " wins!");
+        } else {
+            System.out.println("Tie!");
+        }
+        }
     }
 
     public static int rollDie(Random rand) {
