@@ -11,8 +11,10 @@ public class BarboothGame {
         System.out.println();
 
         // TODO 1: Ask for both player names
-        String player1 = "";
-        String player2 = "";
+        System.out.println("Player 1, please enter your name: ");
+        String player1 = input.nextLine();
+        System.out.println("Player 2, please enter your name: ");
+        String player2 = input.nextLine();
 
         // TODO 2: Roll one die for each player until one player gets a higher number
         String shooter = "";
