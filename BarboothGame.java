@@ -43,11 +43,20 @@ public class BarboothGame {
         System.out.println(shooter + " starts first.");
 
         // TODO 3: Let the shooter roll two dice
-        int die1 = 0;
-        int die2 = 0;
+        System.out.print(shooter + ", please enter 'r' to roll: ");
+        input.nextLine();
+        int die1 = rollDie(rand);
+        int die2 = rollDie(rand);
+        System.out.println(shooter + ": " + die1 + " - " + die2);
 
         // TODO 4: Check whether the shooter wins, loses, or the fader gets a turn
-
+        if (isWinningRoll(die1, die2)) {
+            System.out.println(shooter + " wins!");
+        } else if (isLosingRoll(die1, die2)) {
+            System.out.println(fader + " wins!");
+        } else {
+        	
+        }
         // TODO 5: If needed, let the fader roll two dice
 
         // TODO 6: Display the final result: shooter wins, fader wins, or tie
@@ -60,10 +69,22 @@ public class BarboothGame {
     }
 
     public static boolean isWinningRoll(int die1, int die2) {
-        return false; // TODO
+    	 int[][] winningRolls = {{3,3}, {5,5}, {6,6}, {6,5}, {5,6}};
+    	    for (int[] combo : winningRolls) {
+    	        if ((die1 == combo[0] && die2 == combo[1]) || (die1 == combo[1] && die2 == combo[0])) {
+    	            return true;
+    	        }
+    	    }
+    		return false; // TODO
     }
 
     public static boolean isLosingRoll(int die1, int die2) {
-        return false; // TODO
+    	 int[][] losingRolls = {{1,1}, {2,2}, {4,4}, {1,2}};
+    	    for (int[] combo : losingRolls) {
+    	        if ((die1 == combo[0] && die2 == combo[1]) || (die1 == combo[1] && die2 == combo[0])) {
+    	            return true;
+    	        }
+    	    }
+    	return false; // TODO
     }
 }
