@@ -16,9 +16,31 @@ public class BarboothGame {
         System.out.println("Player 2, please enter your name: ");
         String player2 = input.nextLine();
 
-        // TODO 2: Roll one die for each player until one player gets a higher number
+     // TODO 2: Roll one die for each player until one player gets a higher number
         String shooter = "";
         String fader = "";
+
+        int roll1, roll2;
+        do {
+            System.out.print(player1 + ", please enter 'r' to roll: ");
+            input.nextLine();
+            roll1 = rollDie(rand);
+            System.out.println(player1 + ": " + roll1);
+
+            System.out.print(player2 + ", please enter 'r' to roll: ");
+            input.nextLine();
+            roll2 = rollDie(rand);
+            System.out.println(player2 + ": " + roll2);
+        } while (roll1 == roll2);
+
+        if (roll1 > roll2) {
+            shooter = player1;
+            fader = player2;
+        } else {
+            shooter = player2;
+            fader = player1;
+        }
+        System.out.println(shooter + " starts first.");
 
         // TODO 3: Let the shooter roll two dice
         int die1 = 0;
@@ -34,7 +56,7 @@ public class BarboothGame {
     }
 
     public static int rollDie(Random rand) {
-        return 1; //TODO
+        return rand.nextInt(6) + 1; //TODO
     }
 
     public static boolean isWinningRoll(int die1, int die2) {
